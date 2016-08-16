@@ -11,5 +11,6 @@
 /log/*
 !/log/.keep
 /tmp
+.DS_store
 .env
 vendor/bundle

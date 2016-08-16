@@ -1,0 +1,12 @@
+<h1>Topics#index</h1>
+<p>Find me in app/views/topics/index.html.erb</p>
+<% if user_signed_in? %>
+    <li role="separator" class="divider"></li>
+    <li><%= link_to "マイベージ", user_path(current_user) %></li>
+    <li><%= link_to "アカウント編集", edit_user_registration_path %></li>
+    <li role="separator" class="divider"></li>
+    <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+<% else %>
+    <li><%= link_to "ログイン", new_user_session_path %></li>
+    <li><%= link_to "サインアップ", new_user_registration_path %></li>
+<% end %>
