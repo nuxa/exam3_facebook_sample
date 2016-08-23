@@ -1,12 +1,25 @@
-<h1>Topics#index</h1>
-<p>Find me in app/views/topics/index.html.erb</p>
-<% if user_signed_in? %>
-    <li role="separator" class="divider"></li>
-    <li><%= link_to "マイベージ", user_path(current_user) %></li>
-    <li><%= link_to "アカウント編集", edit_user_registration_path %></li>
-    <li role="separator" class="divider"></li>
-    <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-<% else %>
-    <li><%= link_to "ログイン", new_user_session_path %></li>
-    <li><%= link_to "サインアップ", new_user_registration_path %></li>
-<% end %>
+<div class="container">
+    <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+        <p>Find me in app/views/topics/index.html.erb</p>
+        <h1>Topics一覧</h1>
+        <%= link_to 'トピックを作成する', new_topic_path, class: 'btn btn-default' %>
+        <% @topics.each do |topic| %>
+            <div class="row">
+                <div class="topic-avatar">
+                    <%= profile_img(topic.user) if profile_img(topic.user) %>
+                </div>
+                <p><%= simple_format(topic.content) %></p>
+                <div class="topic_user_name">投稿者: <%= link_to "#{topic.user.name}", user_path(topic.user) %></div>
+                <div class="topic_user_name">投稿日: <%= localize(topic.created_at, format: :default) %></div>
+                <% if topic.created_at < topic.updated_at %>
+                    <div class="topic_user_name">(最終更新日: <%= localize(topic.updated_at, format: :default) %>)</div>
+                <% end %>
+                <% if current_user.id == topic.user.id || current_user.admin? %>
+                    <%= link_to "編集", edit_topic_path(topic.id), class: 'btn btn-default btn-success' %>
+                    <%= link_to "削除", topic_path(topic.id), method: :delete, data: { confirm: '本当によろしいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
+                <% end %>
+            </div>
+        <% end %>
+        <%= link_to "もどる", :back, class: 'btn btn-primary btn-sm' %>
+    </div>
+</div>
