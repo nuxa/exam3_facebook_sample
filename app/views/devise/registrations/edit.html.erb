@@ -13,18 +13,18 @@
                 <%= f.text_field :name, class: "form-control", placeholder: :name %>
             </div>
             <br>
-            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-                <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-            <% end %>
-            <div class="field">
-                <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: :new_password %>
-            </div>
-            <br>
-            <div class="field">
-                <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: :password_confirmation %>
-            </div>
-            <br>
-            <% if false %>
+            <% if @user.provider.blank? %>
+                <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+                <% end %>
+                <div class="field">
+                    <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: :new_password %>
+                </div>
+                <br>
+                <div class="field">
+                    <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: :password_confirmation %>
+                </div>
+                <br>
                 <div class="field">
                     <%= f.password_field :current_password, autocomplete: "off", class: "form-control", placeholder: :current_password %>
                 </div>
