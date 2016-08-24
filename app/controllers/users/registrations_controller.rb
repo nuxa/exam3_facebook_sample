@@ -1,4 +1,9 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  def build_resource(hash=nil)
+    hash[:uid] = User.create_unique_string
+    super
+  end
+
   def update
     self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
     prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
