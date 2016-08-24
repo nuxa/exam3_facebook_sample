@@ -14,13 +14,15 @@ ja:
     deadline: 締め切り
     current_password: "現在のパスワード"
     password: "パスワード"
-    new_password: "新しいパスワード"
+    new_password: "新しいパスワード(最小6文字)"
     password_confirmation: "確認用パスワード"
     remember_me: "ログインを記憶"
   user:
     sign_up: "サインアップ"
     sign_in: "ログイン"
     sign_out: "ログアウト"
+    update: "更新"
+    delete: "削除"
   date:
     abbr_day_names:
     - 日
