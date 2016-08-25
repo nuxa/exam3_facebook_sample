@@ -1,0 +1,152 @@
+// Place all the styles related to the Topics controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+header {
+  width: 100%;
+  background-color:#3b5998;
+  text-align: center;
+}
+
+.navbar-default {
+    border: 0;
+    padding: 5px 25px;
+}
+.navbar {
+    background-color: transparent;
+    color: white;
+    margin-bottom: 0px;
+}
+.navbar-default {
+  .navbar-brand {
+    color: #ccc;
+    &:hover {
+      color: white;
+    }
+  }
+  .navbar-nav > li > a {
+    color: #ccc;
+    &:hover, &:focus {
+      color: white;
+    }
+  }
+  .navbar-nav > .open > a {
+    background-color: transparent;
+    color: white;
+    &:hover, &:focus {
+      background-color: transparent;
+      color: white;
+    }
+  }
+}
+@media (max-width: 767px) {
+.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #ccc;
+    text-align: center;
+    &:hover, &:focus {
+      color: white;
+    }
+  }
+  .navbar-default .navbar-toggle {
+    background-color: transparent;
+    &:hover, &:focus {
+      background-color: transparent;
+    }
+  }
+	.divider {
+		height: 1px;
+		margin: 9px 0;
+		overflow: hidden;
+		background-color: #e5e5e5;
+	}
+}
+
+img{
+  max-width: 100%;
+}
+
+.wrapper {
+	margin: 0px auto;
+	padding: 20px 20px 20px 35px;
+	.row {
+		border-bottom: 1px solid #ccc;
+		text-align: left;
+		padding: 20px;
+		word-wrap: break-word;
+		.topic_user_name {
+			display: block;
+			text-align: right;
+			font-size: 11px;
+		}
+	}
+}
+input[type="submit"].btn-block {
+	margin: 15px 0;
+}
+
+.topic-avatar {
+  display: block;
+  float: right;
+  width: 50px;
+  height: 50px;
+  img {
+    display: block;
+    margin: 0 auto;
+    border-radius: 20px;
+  }
+}
+
+.user-page {
+	.container {
+		h2 {
+			border-bottom: 1px solid #ccc;
+		}
+		p {
+			word-wrap: break-word;
+		}
+	}
+}
+.container-child {
+	margin: 30px 0;
+	.profile-icon {
+		img {
+			display: block;
+			text-align: center;
+		}
+	}
+	img {
+		display: block;
+		vertical-align: middle;
+		margin: 0 auto;
+		width: 75px;
+		height: 75px;
+	}
+}
+
+.alert, .alert-danger{
+  ul {
+    padding: 0;
+    li {
+      list-style-type: none;
+    }
+  }
+}
+
+footer {
+  width: 100%;
+  background-color:#2c3e50;
+  padding: 20px 0;
+  color: white;
+  margin: auto;
+  padding-bottom: 10px;
+  font-size: 12px;
+}
+
+footer {  /*<footer class="footer">*/
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 75px;
+  // background-color: #f5f5f5;
+}

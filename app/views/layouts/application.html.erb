@@ -10,17 +10,8 @@
         <%= csrf_meta_tags %>
     </head>
     <body>
+        <%= render 'layouts/header' %>
 
-        <% if user_signed_in? %>
-            <li role="separator" class="divider"></li>
-            <li><%= link_to "マイベージ", user_path(current_user) %></li>
-            <li><%= link_to "アカウント編集", edit_user_registration_path %></li>
-            <li role="separator" class="divider"></li>
-            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-        <% else %>
-            <li><%= link_to "ログイン", new_user_session_path %></li>
-            <li><%= link_to "サインアップ", new_user_registration_path %></li>
-        <% end %>
         <% flash.each do |type, msg| %>
             <% if type == 'notice' %>
                 <div class="alert alert-success" role="alert"><%= msg %></div>
@@ -33,5 +24,6 @@
 
         <%= yield %>
 
+        <%= render 'layouts/footer' %>
     </body>
 </html>
