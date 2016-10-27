@@ -9,7 +9,13 @@ Rails.application.routes.draw do
 
   resources :topics do
     resources :comments
+
+    collection do
+      post :confirm
+    end
   end
+
+  resources :relationships, only: [:create, :destroy]
 
   resources :users, only: [:index, :show, :edit, :update]
 
