@@ -41,6 +41,12 @@ gem 'fog'
 gem 'dotenv-rails'
 gem 'unicorn'
 
+#initailize value
+gem 'seed-fu', '~> 2.3'
+
+#search engine
+gem 'ransack'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -1,31 +1,39 @@
-<div class="container">
-    <div class="wrapper col-md-10 col-md-offset-2 col-sm-10">
-        <h1>Topics一覧</h1>
-        <%= link_to 'トピックを作成する', new_topic_path, class: 'btn btn-default' %>
-        <% @topics.each do |topic| %>
-            <% if isfriend?(topic.user) %>
-                <div class="row">
-                    <div class="topic-avatar">
-                        <%= profile_img(topic.user) if profile_img(topic.user) %>
-                    </div>
-                    <p><%= simple_format(topic.content) %></p>
-                    <div class="topic_user_name">投稿者: <%= link_to "#{topic.user.name}", user_path(topic.user) %></div>
-                    <div class="topic_user_name">投稿日: <%= localize(topic.created_at, format: :default) %></div>
+<h1>Topics一覧</h1>
+<%= link_to 'トピックを作成する', new_topic_path, class: 'btn btn-default' %>
+<%= link_to "もどる", :back, class: 'btn btn-primary btn-sm' %>
+<br> <br>
+<div class="topic-wrapper">
+    <% @topics.each do |topic| %>
+        <% if isfriend?(topic.user) %>
+            <div class="row topic-row">
+                <div class="topic-avatar">
+                    <%= profile_img(topic.user) if profile_img(topic.user) %>
+                </div>
+                <p><%= link_to "#{topic.user.name}", user_path(topic.user) %></p>
+                <p><%= topic.created_at.to_s(:human) %></p>
+                <div class="clear-both"></div>
+                <div class="topic-content">
+                <p><%= simple_format(topic.content) %></p>
+                </div>
+                <div class="topic-img">
+                    <%= topic_img(topic) if topic_img(topic) %>
+                </div>
+                <div class="topic_user_name">
+                    投稿日: <%= localize(topic.created_at, format: :default) %><br>
                     <% if topic.created_at < topic.updated_at %>
-                        <div class="topic_user_name">(最終更新日: <%= localize(topic.updated_at, format: :default) %>)</div>
-                    <% end %>
-                    <br>
-                    <% if topic.comments.count >= 1 %>
-                        <div class="topic_user_name"><strong>コメント<%= topic.comments.count %>件</strong></div>
-                    <% end %>
-                    <div class="topic_user_name"><%= link_to "コメントする", topic_path(topic) %></div>
-                    <% if current_user.id == topic.user.id %>
-                        <%= link_to "編集", edit_topic_path(topic.id), class: 'btn btn-default btn-success' %>
-                        <%= link_to "削除", topic_path(topic.id), method: :delete, data: { confirm: '本当によろしいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
+                        (最終更新日: <%= localize(topic.updated_at, format: :default) %>)<br>
                     <% end %>
                 </div>
-            <% end %>
+                <br>
+                <% if topic.comments.count >= 1 %>
+                    <div class="topic_user_name"><strong>コメント<%= topic.comments.count %>件</strong></div>
+                <% end %>
+                <div class="topic_user_name"><%= link_to "コメントする", topic_path(topic) %></div>
+                <% if current_user.id == topic.user.id %>
+                    <%= link_to "編集", edit_topic_path(topic.id), class: 'btn btn-default btn-success' %>
+                    <%= link_to "削除", topic_path(topic.id), method: :delete, data: { confirm: '本当によろしいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
+                <% end %>
+            </div>
         <% end %>
-        <%= link_to "もどる", :back, class: 'btn btn-primary btn-sm' %>
-    </div>
+    <% end %>
 </div>

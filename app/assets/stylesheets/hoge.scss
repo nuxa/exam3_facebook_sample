@@ -1,0 +1,56 @@
+// Place all the styles related to the Topics controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.navbar2-default {
+    border: 0;
+    padding: 7px 25px;
+}
+.navbar2 {
+    background-color: #3b5998;
+    color: white;
+    margin-bottom: 0px;
+}
+.navbar2-default {
+  .navbar2-brand {
+    color: #ccc;
+    &:hover {
+      color: white;
+    }
+  }
+  .navbar2-nav > li > a {
+    color: #ccc;
+    &:hover, &:focus {
+      color: white;
+    }
+  }
+  .navbar2-nav > .open > a {
+    background-color: transparent;
+    color: white;
+    &:hover, &:focus {
+      background-color: transparent;
+      color: white;
+    }
+  }
+}
+@media (max-width: 767px) {
+.navbar2-default .navbar2-nav .open .dropdown-menu > li > a {
+    color: #ccc;
+    text-align: center;
+    &:hover, &:focus {
+      color: white;
+    }
+  }
+  .navbar2-default .navbar2-toggle {
+    background-color: transparent;
+    &:hover, &:focus {
+      background-color: transparent;
+    }
+  }
+	.divider {
+		height: 1px;
+		margin: 9px 0;
+		overflow: hidden;
+		background-color: #e5e5e5;
+	}
+}

@@ -2,7 +2,7 @@
 <html lang="ja">
     <meta charset="UTF-8">
     <head>
-        <title>Achieve</title>
+        <title>Faoemock</title>
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
         <script src="https://js.pusher.com/3.1/pusher.min.js"></script>
@@ -26,8 +26,17 @@
             <% end %>
         <% end %>
 
-        <%= yield %>
+        <% if user_signed_in? %>
+        <div class="container">
+            <%= render 'layouts/sidebar' %>
+            <div class="wrapper col-md-6 col-sm-8">
+                <%= yield %>
+            </div>
+            <%= render 'layouts/footer' %>
+        </div>
+        <% else %>
+            <%= yield %>
+        <% end %>
 
-        <%= render 'layouts/footer' %>
     </body>
 </html>
